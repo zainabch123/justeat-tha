@@ -28,3 +28,20 @@ header {
   background-color: lightblue;
 }
 
+.restaurants-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.restaurant-card {
+  border: 2px solid black;
+  width: 250px;
+  height: 300px;
+border-radius: 8px;
+padding: 1rem;
+list-style: none;
+
+}
