@@ -21,7 +21,7 @@ import { createError } from "./utils/errorUtils.js";
 app.get("/restaurants", async function (req, res, next) {
   try {
     const response = await fetch(
-      "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/E"
+      "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/EC4M7RF"
     );
 
     if (!response.ok) {
@@ -33,7 +33,6 @@ app.get("/restaurants", async function (req, res, next) {
     }
 
     const data = await response.json();
-    // console.log(response);
 
     if (data.restaurants.length === 0) {
       const error = createError("No restaurants found for this location", 404);
