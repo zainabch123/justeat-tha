@@ -15,27 +15,31 @@ app.use(express.json());
 // Tell express to use a URL Encoding middleware
 app.use(express.urlencoded({ extended: true }));
 
+import { createError } from "./utils/errorUtils.js";
+
 //Add routers below:
-app.get("/restaurants", async function (req, res) {
+app.get("/restaurants", async function (req, res, next) {
   try {
     const response = await fetch(
-      "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/EC4M7RF"
+      "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/E"
     );
 
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch: ${response.status} ${response.statusText}`
+      const error = createError(
+        `Failed to fetch: ${response.statusText}`,
+        response.status
       );
+      return next(error);
     }
 
     const data = await response.json();
-    console.log(response);
+    // console.log(response);
 
     if (data.restaurants.length === 0) {
-      return res
-        .status(404)
-        .json({ error: "No restaurants found for this location" });
+      const error = createError("No restaurants found for this location", 404);
+      return next(error);
     }
+
     const filteredRestaurants = data.restaurants
       .map((restaurant) => ({
         name: restaurant.name,
@@ -44,11 +48,18 @@ app.get("/restaurants", async function (req, res) {
         address: restaurant.address,
       }))
       .slice(0, 10);
-    res.status(200).json(filteredRestaurants);
+    res.status(200).json({ data: filteredRestaurants });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ Error: error.message });
+    next(error);
   }
+});
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Something went wrong!";
+
+  res.status(statusCode).json({ error: message });
 });
 
 app.get("*", (req, res) => {
