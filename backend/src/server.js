@@ -16,13 +16,47 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Add routers below:
+app.get("/restaurants", async function (req, res) {
+  try {
+    const response = await fetch(
+      "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/EC4M7RF"
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const data = await response.json();
+    console.log(response);
+
+    if (data.restaurants.length === 0) {
+      return res
+        .status(404)
+        .json({ error: "No restaurants found for this location" });
+    }
+    const filteredRestaurants = data.restaurants
+      .map((restaurant) => ({
+        name: restaurant.name,
+        cuisines: restaurant.cuisines,
+        rating: restaurant.rating.starRating,
+        address: restaurant.address,
+      }))
+      .slice(0, 10);
+    res.status(200).json(filteredRestaurants);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ Error: error.message });
+  }
+});
 
 app.get("*", (req, res) => {
   res.json({ ok: true });
 });
 
 // Start API server
-const port = process.env.PORT;
-app.listen(port, () => {
-  console.log(`\n Server is running on http://localhost:${port}\n`);
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`\n Server is running on http://localhost:${PORT}\n`);
 });
