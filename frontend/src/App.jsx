@@ -21,6 +21,8 @@ function App() {
     fetchData();
   }, []);
 
+  console.log(restaurants);
+
   return (
     <main className="container">
       <header style={{ border: "2px solid black" }}>Header</header>
@@ -32,7 +34,21 @@ function App() {
         <ul className="restaurants-grid">
           {restaurants.map((restaurant, index) => (
             <li key={index} className="restaurant-card">
-              <div>Restaurant Info</div>
+              <div className="restaurant-card-image">
+                {restaurant.imgUrl ? (
+                  <img src={restaurant.imgUrl} alt="Restaurant Image" />
+                ) : (
+                  <div className="placeholder">No Image Available</div>
+                )}
+              </div>
+              <div className="restaurant-card-info">
+                <h3>{restaurant.name.split("- ")[0].trim()}</h3>
+                <p>{restaurant.cuisines[0].name}</p>
+                <p>
+                  <strong>{restaurant.rating}</strong>
+                </p>
+                {/* <p>{restaurant.address}</p> */}
+              </div>
             </li>
           ))}
         </ul>

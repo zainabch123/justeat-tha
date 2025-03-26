@@ -42,9 +42,10 @@ app.get("/restaurants", async function (req, res, next) {
     const filteredRestaurants = data.restaurants
       .map((restaurant) => ({
         name: restaurant.name,
-        cuisines: restaurant.cuisines,
-        rating: restaurant.rating.starRating,
+        cuisines: restaurant.cuisines.map((cuisine) => cuisine.name),
+        rating: restaurant.rating.starRating.toFixed(1),
         address: restaurant.address,
+        imgUrl: restaurant.logoUrl,
       }))
       .slice(0, 10);
     res.status(200).json({ data: filteredRestaurants });
