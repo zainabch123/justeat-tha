@@ -44,7 +44,10 @@ app.get("/restaurants", async function (req, res, next) {
       .map((restaurant) => ({
         name: restaurant.name,
         cuisines: restaurant.cuisines.map((cuisine) => cuisine.name),
-        rating: restaurant.rating.starRating.toFixed(1),
+        rating:
+          restaurant.rating.starRating > 0
+            ? restaurant.rating.starRating.toFixed(1)
+            : restaurant.rating.starRating,
         address: formatAddress(restaurant.address),
         imgUrl: restaurant.logoUrl,
       }))

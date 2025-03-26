@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import foodImg from "./assets/foodImg.jpg";
 import "./App.css";
 
 const PORT = import.meta.env.VITE_PORT;
@@ -35,19 +36,22 @@ function App() {
           {restaurants.map((restaurant, index) => (
             <li key={index} className="restaurant-card">
               <div className="restaurant-card-image">
-                {restaurant.imgUrl ? (
+                <img src={foodImg}/>
+                {/* {restaurant.imgUrl ? (
                   <img src={restaurant.imgUrl} alt="Restaurant Image" />
                 ) : (
                   <div className="placeholder">No Image Available</div>
-                )}
+                )} */}
               </div>
               <div className="restaurant-card-info">
                 <h3>{restaurant.name.split("- ")[0].trim()}</h3>
-                <p>{restaurant.cuisines.join(" | ")}</p>
-                <p>
+                <p className="restaurant-cuisines-p">
+                  {restaurant.cuisines.join(" | ")}
+                </p>
+                <p className="restaurant-rating-p">
                   <strong>{restaurant.rating}</strong>
                 </p>
-                <p>{restaurant.address}</p>
+                <p className="restaurant-address-p">{restaurant.address}</p>
               </div>
             </li>
           ))}
