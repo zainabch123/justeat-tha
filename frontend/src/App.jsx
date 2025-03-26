@@ -36,15 +36,21 @@ function App() {
           {restaurants.map((restaurant, index) => (
             <li key={index} className="restaurant-card">
               <div className="restaurant-card-image">
-                <img src={foodImg}/>
-                {/* {restaurant.imgUrl ? (
-                  <img src={restaurant.imgUrl} alt="Restaurant Image" />
-                ) : (
-                  <div className="placeholder">No Image Available</div>
-                )} */}
+                <img src={foodImg} />
               </div>
+              {restaurant.imgUrl && (
+                <div className="restaurant-logo-wrapper">
+                  <img
+                    className="restaurant-logo"
+                    src={restaurant.imgUrl}
+                    alt="Restaurant Image"
+                  />
+                </div>
+              )}
               <div className="restaurant-card-info">
-                <h3>{restaurant.name.split("- ")[0].trim()}</h3>
+                <h3 className="restaurant-title">
+                  {restaurant.name.split("- ")[0].trim()}
+                </h3>
                 <p className="restaurant-cuisines-p">
                   {restaurant.cuisines.join(" | ")}
                 </p>
