@@ -43,11 +43,11 @@ function App() {
               </div>
               <div className="restaurant-card-info">
                 <h3>{restaurant.name.split("- ")[0].trim()}</h3>
-                <p>{restaurant.cuisines[0].name}</p>
+                <p>{restaurant.cuisines.join(" | ")}</p>
                 <p>
                   <strong>{restaurant.rating}</strong>
                 </p>
-                {/* <p>{restaurant.address}</p> */}
+                <p>{restaurant.address}</p>
               </div>
             </li>
           ))}

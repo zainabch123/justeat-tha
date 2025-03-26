@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 import { createError } from "./utils/errorUtils.js";
+import { formatAddress } from "./utils/addressFormatter.js";
 
 //Add routers below:
 app.get("/restaurants", async function (req, res, next) {
@@ -44,7 +45,7 @@ app.get("/restaurants", async function (req, res, next) {
         name: restaurant.name,
         cuisines: restaurant.cuisines.map((cuisine) => cuisine.name),
         rating: restaurant.rating.starRating.toFixed(1),
-        address: restaurant.address,
+        address: formatAddress(restaurant.address),
         imgUrl: restaurant.logoUrl,
       }))
       .slice(0, 10);
