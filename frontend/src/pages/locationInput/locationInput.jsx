@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./locationInput.css";
 
-const LocationInput = ({ restaurants, setRestaurants, port }) => {
+const LocationInput = ({ setRestaurants, port }) => {
   const navigate = useNavigate();
   const [locationInput, setLocationInput] = useState("");
   const [error, setError] = useState(null);
@@ -27,7 +27,7 @@ const LocationInput = ({ restaurants, setRestaurants, port }) => {
       }
     } catch (error) {
       console.log(error);
-      setError("An error occurred trying to search your postcode. Please try again.");
+      setError("An error occurred. Please try again.");
     }
   };
 
