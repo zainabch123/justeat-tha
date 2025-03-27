@@ -168,15 +168,17 @@ input:focus {
 .restaurant-title-section {
   display: grid;
   grid-template-columns: 1fr 50px;
+  
 }
  
 .restaurant-title {
+  width: 200px;
   font-size: 1rem;
 }
 
 .restaurant-rating-section {
   display: grid;
-  grid-template-columns: 20px 1fr;
+  grid-template-columns: 20px 30px;
   align-items: center;
   justify-items: center;
 }
