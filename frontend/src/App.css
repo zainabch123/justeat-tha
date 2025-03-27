@@ -168,9 +168,8 @@ input:focus {
 .restaurant-title-section {
   display: grid;
   grid-template-columns: 1fr 50px;
-  
 }
- 
+
 .restaurant-title {
   width: 200px;
   font-size: 1rem;
@@ -194,6 +193,62 @@ input:focus {
 
 .restaurant-address-p {
   font-size: 0.8rem;
+}
+
+.location-input-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f68c36;
+}
+
+.location-input-card {
+  display: grid;
+  grid-template-columns: minmax(300px, 600px);
+  border: 1px solid lightgray;
+  padding: 35px 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.location-input-wrapper {
+  width: 100%;
+  max-width: 650px;
+  padding: 3px;
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  border: 2px solid black;
+  border-radius: 30px;
+}
+
+.location-input-card h2 {
+  padding: 10px 0px;
+}
+
+#location-input {
+  width: 100%;
+  height: 45px;
+  font-size: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+}
+
+#location-input {
+  width: 100%;
+}
+
+#location-input-button {
+  border-radius: 25px;
+  border: none;
+}
+
+#location-input-button:hover {
+  background-color: #f68c36;
+  color: white;
 }
 
 @font-face {

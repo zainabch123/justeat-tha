@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import LocationPage from "./pages/locationPage";
+import LocationInputPage from "./pages/locationInputPage";
 import DashboardPage from "./pages/dashboardPage";
 
 import { useEffect, useState } from "react";
@@ -13,7 +13,7 @@ const PORT = import.meta.env.VITE_PORT;
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<LocationPage />}></Route>
+      <Route path="/" element={<LocationInputPage />}></Route>
       <Route path="dashboard" element={<DashboardPage />}></Route>
     </Routes>
   );
