@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { AppContext } from "../App";
 
 const Header = () => {
@@ -36,7 +37,9 @@ const Header = () => {
     <header>
       <div className="header-content">
         <div className="header-logo">
-          <h2>JE</h2>
+          <Link to="/">
+            <h2>JE</h2>
+          </Link>
         </div>
         <div className="search-bar-section">
           <div className="search-input-wrapper">
