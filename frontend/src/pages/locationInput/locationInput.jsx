@@ -1,24 +1,28 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../../App";
+
 import "./locationInput.css";
 
-const LocationInput = ({ setRestaurants, port }) => {
+const LocationInput = () => {
+  const { setRestaurants, fetchRestaurants } = useContext(AppContext);
   const navigate = useNavigate();
   const [locationInput, setLocationInput] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleClick = async (event) => {
     event.preventDefault();
     if (!locationInput) return;
+    setLoading(true);
 
     try {
-      const response = await fetch(
-        `http://localhost:${port}/restaurants?searchQuery=${locationInput}`
-      );
-      const data = await response.json();
-      setRestaurants(data.data);
+      const data = await fetchRestaurants(locationInput);
+      setLoading(false);
 
       if (data.data) {
+        setRestaurants(data.data);
         setLocationInput("");
         navigate("/dashboard");
       } else {
@@ -47,13 +51,20 @@ const LocationInput = ({ setRestaurants, port }) => {
             value={locationInput || ""}
             onChange={handleInput}
           ></input>
-          <button
-            id="location-input-button"
-            type="button"
-            onClick={handleClick}
-          >
-            Search
-          </button>
+
+          {loading ? (
+            <button id="location-input-button" type="button">
+              <div className="loading-spinner"></div>
+            </button>
+          ) : (
+            <button
+              id="location-input-button"
+              type="button"
+              onClick={handleClick}
+            >
+              Search
+            </button>
+          )}
         </div>
         {error && <p className="error">{error}</p>}
       </div>

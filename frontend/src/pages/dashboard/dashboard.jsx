@@ -1,15 +1,17 @@
 import Header from "../../components/header";
 import RestaurantList from "../../components/restaurantsList";
-import "./dashboard.css"
+import "./dashboard.css";
 
-const DashboardPage = ({ restaurants }) => {
-
+const DashboardPage = ({
+  restaurants
+}) => {
+  
   return (
     <div className="dashboard-page">
-      <Header/>
+      <Header />
       <div className="overflow-container">
         <div className="content-wrapper">
-          <RestaurantList restaurants={restaurants}/>
+          <RestaurantList restaurants={restaurants} />
         </div>
       </div>
     </div>

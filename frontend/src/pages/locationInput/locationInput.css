@@ -48,11 +48,30 @@
   border-radius: 25px;
   border: none;
   cursor: pointer;
+  justify-items: center;
 }
 
 #location-input-button:hover {
   background-color: #f68c36;
   color: white;
+}
+
+.loading-spinner {
+  border: 7px solid rgba(0, 0, 0, 0.1);
+  border-top: 7px solid white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error {
