@@ -5,11 +5,10 @@ import "./dashboard.css"
 const DashboardPage = ({ restaurants }) => {
 
   return (
-    <div className="container">
+    <div className="dashboard-page">
       <Header/>
       <div className="overflow-container">
         <div className="content-wrapper">
-          <aside className="left-sidebar">Sidebar</aside>
           <RestaurantList restaurants={restaurants}/>
         </div>
       </div>

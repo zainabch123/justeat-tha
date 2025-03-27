@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import LocationInput from "./pages/locationInput/locationInput";
 import Dashboard from "./pages/dashboard/dashboard";

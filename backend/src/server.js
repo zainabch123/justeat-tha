@@ -36,7 +36,6 @@ app.get("/restaurants", async function (req, res, next) {
 
     const data = await response.json();
 
-
     if (data.restaurants.length === 0) {
       const error = createError("No restaurants found for this location", 404);
       return next(error);

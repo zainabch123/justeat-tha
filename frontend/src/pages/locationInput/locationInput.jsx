@@ -16,7 +16,6 @@ const LocationInput = ({ setRestaurants, port }) => {
         `http://localhost:${port}/restaurants?searchQuery=${locationInput}`
       );
       const data = await response.json();
-      console.log(data);
       setRestaurants(data.data);
 
       if (data.data) {
@@ -35,7 +34,6 @@ const LocationInput = ({ setRestaurants, port }) => {
     setLocationInput(event.target.value);
   }
 
-  console.log(locationInput);
   return (
     <div className="location-input-page">
       <div className="location-input-card">
