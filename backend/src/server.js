@@ -21,8 +21,9 @@ import { formatAddress } from "./utils/addressFormatter.js";
 //Add routers below:
 app.get("/restaurants", async function (req, res, next) {
   try {
+    const searchQuery = req.query.searchQuery;
     const response = await fetch(
-      "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/EC4M7RF"
+      `https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/${searchQuery}`
     );
 
     if (!response.ok) {
@@ -34,6 +35,7 @@ app.get("/restaurants", async function (req, res, next) {
     }
 
     const data = await response.json();
+
 
     if (data.restaurants.length === 0) {
       const error = createError("No restaurants found for this location", 404);
@@ -54,7 +56,7 @@ app.get("/restaurants", async function (req, res, next) {
       .slice(0, 10);
     res.status(200).json({ data: filteredRestaurants });
   } catch (error) {
-    next(error);
+    return res.status(500).json({ error: "Unable to add new trip" });
   }
 });
 

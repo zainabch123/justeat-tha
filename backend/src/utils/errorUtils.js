@@ -1,10 +1,8 @@
 function createError(message, statusCode) {
-    const errorObj = {
-    statusCode: statusCode,
-    message: message
-  };
-  return errorObj;
-}
+     const error = new Error(message); 
+  error.statusCode = statusCode; 
+  return error; 
+};
 
 export {
     createError

@@ -1,28 +1,26 @@
 import { useEffect, useState } from "react";
-import foodImg from "../assets/foodImg.jpg";
-import SearchIcon from "../assets/searchIcon";
-import StarIcon from "../assets/starIcon";
+import foodImg from "../../assets/foodImg.jpg";
+import SearchIcon from "../../assets/searchIcon";
+import StarIcon from "../../assets/starIcon";
+import "./dashboard.css"
 
 const PORT = import.meta.env.VITE_PORT;
 
+const DashboardPage = ({ restaurants, port }) => {
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:${PORT}/restaurants`);
 
-const DashboardPage = () => {
-  const [restaurants, setRestaurants] = useState([]);
+  //       const data = await response.json();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:${PORT}/restaurants`);
-
-        const data = await response.json();
-
-        setRestaurants(data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  //       setRestaurants(data.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   console.log(restaurants);
   return (
@@ -69,7 +67,7 @@ const DashboardPage = () => {
                 <div className="restaurant-card-info">
                   <div className="restaurant-title-section">
                     <h3 className="restaurant-title">
-                      {restaurant.name.split("- ")[0].trim()}
+                      {restaurant.name.split(/[-–,]/)[0].trim()}
                     </h3>
                     <div className="restaurant-rating-section">
                       <StarIcon />
