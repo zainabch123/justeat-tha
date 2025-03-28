@@ -42,3 +42,4 @@ This section wil outline any improvements I would have made.
 1. Restaurant filtering - I think the ability to filter `restaurantData` according to the different categories/types of cuisines would add another helpful element of functionality to me app.
 2. Pagination - Showcasing more restaurant results (10 per page) would also enhance the UI.
 
+Thank you for reviewing my project.
