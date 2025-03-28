@@ -32,7 +32,7 @@ const getRestaurantData = async (req, res, next) => {
             ? restaurant.rating.starRating.toFixed(1)
             : restaurant.rating.starRating,
         address: formatAddress(restaurant.address),
-        imgUrl: restaurant.logoUrl,
+        imgUrl: restaurant.logoUrl ? restaurant.logoUrl : null,
       }))
       .slice(0, 10);
     res.status(200).json({ data: filteredRestaurants });

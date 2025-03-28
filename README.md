@@ -16,7 +16,7 @@ This project contains seperate **frontend** and **backend** directories. To run 
 10. To run the **frontend**, navigate to the backend folder with `cd ../frontend`. Then run `npm run dev`. The frontend app should start.
 11. NOTE: You can edit the values of the port variables in the `.env` files as long as they are both changed to the same value. E.g. `VITE_PORT=4000` in the frontend and `PORT=4000` in the backend.
 
-## Assumptions/Additionw
+## Assumptions/Additions
 
 Overall, I found this task to be quite straightforward. The emphasis was clear that this was a frontend-focused task. Nevertheless, this section will outline aspects of the task were I made assumptions / made additions:
 
@@ -27,6 +27,9 @@ Overall, I found this task to be quite straightforward. The emphasis was clear t
 5. Sorting function - I wanted to showcase skills in being able to display the data in different ways by including the ability to sort the `restaurantData`.
 6. Ability to search any postcode - I did this to further add to the functionality of my app and to further showcase my skills.
 7. Responsive/Mobile-friendly approach - I wanted to showcase my skills in creating flexible layouts using css grid, flexbox, and media queries.
+8. Adding loading spinner - Not specified but thought it was neccesary so that user would be aware their search request is being processed while waiting for the data to be returned.
+9. Adding error handling to frontend and backend - This was necessary so that user would be aware of when/why their search request was not going through. I also consider it best practice when dealing with API's.
+
 
 
 
