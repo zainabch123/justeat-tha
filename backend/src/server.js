@@ -17,12 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 
 //Add routers below:
 import restaurantsRouter from "./routes/restaurants.js";
-app.use("/restaurants", restaurantsRouter)
+app.use("/restaurants", restaurantsRouter);
 
 //Middleware
 import { errorHandler } from "./middleware/errorHandler.js";
 app.use(errorHandler);
-
 
 app.get("*", (req, res) => {
   res.json({ ok: true });
