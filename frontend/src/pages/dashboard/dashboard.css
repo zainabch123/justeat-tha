@@ -133,14 +133,14 @@ input:focus {
 .left-sidebar {
   display: grid;
   height: fit-content;
-  border: 2px solid lightgrey;
   padding: 1rem;
   border-radius: 30px;
 }
 
 
 #sort-menu{
-  border-radius: 5px ;
+  border-radius: 20px ;
+  padding: 3px 3px;
 }
 
 .restaurants-grid {
