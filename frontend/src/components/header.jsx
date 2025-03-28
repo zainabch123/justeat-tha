@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../App";
 
 const Header = () => {
-  const { setRestaurants, fetchRestaurants } = useContext(AppContext);
+  const { setRestaurantData, setRestaurantsToDisplay, fetchRestaurants } =
+    useContext(AppContext);
   const [headerInput, setHeaderInput] = useState("");
   const [headerError, setHeaderError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,8 @@ const Header = () => {
       setLoading(false);
 
       if (data.data) {
-        setRestaurants(data.data);
+        setRestaurantData(data.data);
+        setRestaurantsToDisplay(data.data);
         setHeaderInput("");
       } else {
         setHeaderError(data.error);

@@ -8,7 +8,8 @@ const PORT = import.meta.env.VITE_PORT;
 export const AppContext = createContext();
 
 const App = () => {
-  const [restaurants, setRestaurants] = useState([]);
+  const [restaurantData, setRestaurantData] = useState([]);
+  const [restaurantsToDisplay, setRestaurantsToDisplay] = useState([]);
 
   const fetchRestaurants = async (searchInput) => {
     const response = await fetch(
@@ -19,14 +20,17 @@ const App = () => {
   };
   return (
     <AppContext.Provider
-      value={{ fetchRestaurants, setRestaurants, restaurants }}
+      value={{
+        fetchRestaurants,
+        setRestaurantData,
+        restaurantData,
+        restaurantsToDisplay,
+        setRestaurantsToDisplay,
+      }}
     >
       <Routes>
         <Route path="/" element={<LocationInput />}></Route>
-        <Route
-          path="dashboard"
-          element={<Dashboard restaurants={restaurants} />}
-        ></Route>
+        <Route path="dashboard" element={<Dashboard />}></Route>
       </Routes>
     </AppContext.Provider>
   );

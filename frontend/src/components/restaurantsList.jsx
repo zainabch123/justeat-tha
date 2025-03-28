@@ -1,9 +1,9 @@
 import RestaurantListItem from "./restaurantListItem";
 
-const RestaurantList = ({ restaurants }) => {
+const RestaurantList = ({ restaurantsToDisplay }) => {
   return (
     <ul className="restaurants-grid">
-      {restaurants.map((restaurant, index) => (
+      {restaurantsToDisplay.map((restaurant, index) => (
         <RestaurantListItem key={index} restaurant={restaurant} />
       ))}
     </ul>

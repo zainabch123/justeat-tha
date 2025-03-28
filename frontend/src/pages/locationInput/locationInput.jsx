@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { AppContext } from "../../App";
 
 import "./locationInput.css";
 
 const LocationInput = () => {
-  const { setRestaurants, fetchRestaurants } = useContext(AppContext);
+  const { setRestaurantData, setRestaurantsToDisplay, fetchRestaurants } = useContext(AppContext);
   const navigate = useNavigate();
   const [locationInput, setLocationInput] = useState("");
   const [error, setError] = useState(null);
@@ -22,7 +21,8 @@ const LocationInput = () => {
       setLoading(false);
 
       if (data.data) {
-        setRestaurants(data.data);
+        setRestaurantData(data.data);
+        setRestaurantsToDisplay(data.data);
         setLocationInput("");
         navigate("/dashboard");
       } else {
