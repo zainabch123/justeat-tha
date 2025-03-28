@@ -38,7 +38,7 @@ const Header = () => {
       <div className="header-content">
         <div className="header-logo">
           <Link to="/">
-            <h2>JE</h2>
+            <h2>{`< JE`}</h2>
           </Link>
         </div>
         <div className="search-bar-section">
