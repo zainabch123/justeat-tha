@@ -22,10 +22,15 @@ This project contains seperate **frontend** and **backend** directories. The too
 
 This section will outline how I met the core requirements of this assignment in my app:
 
-1. **Using the API provided you will need to send a postcode to return a set of data:**
-Once a valid postcode has been submitted, my frontend app sends an fetch request to my backend server which then calls upon the API url and returns the `restaurantData`. 
+1. **Using the API provided you will need to send a postcode to return a set of data:** Once a valid postcode has been submitted, my frontend app sends an fetch request to my backend server which then calls upon the API url and returns the `restaurantData`. See `/frontend/src/pages/locationInput/locationInput.jsx` and `/frontend/src/components/header.jsx`.
 
- you’ll need to filter this data to focus just on the restaurant data.
+2. **You will notice that a lot of data is returned in the ‘restaurant object’, we’re only interested in the following pieces of data being returned: Name, Cuisines, Rating, Address:** Once valid data has been received my backend server processes the data and filters out the required data points. See `/backend/src/controllers/restaurants.js`.
+
+3. **We’d like you to limit your shown data to the first 10 restaurants returned:** My backend server also limits the data to 10 restaurants before returning back to the frontend for display. See `/backend/src/controllers/restaurants.js`.
+
+4. **We would like you to display these four data points in any way of your choosing:** I opted to display my data using a repsonsive card grid. See `/frontend/src/components/restaurantList` and `/frontend/src/components/restaurantListItem` and `/frontend/src/pages/dashboard/dashboard.css`.
+
+5. **Please upload your completed solution to Github (bonus points if we can see git history!):** Solution has been uploaded to GitHub with extensive gitHistory.
 
 ## Assumptions/Additions
 
