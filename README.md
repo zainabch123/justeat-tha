@@ -18,6 +18,15 @@ This project contains seperate **frontend** and **backend** directories. The too
 10. To run the **frontend**, navigate to the backend folder with `cd ../frontend`. Then run `npm run dev`. The frontend app should start.
 11. NOTE: You can edit the values of the port variables in the `.env` files as long as they are both changed to the same value. E.g. `VITE_PORT=4000` in the frontend and `PORT=4000` in the backend.
 
+## Meeting the requirement
+
+This section will outline how I met the core requirements of this assignment in my app:
+
+1. **Using the API provided you will need to send a postcode to return a set of data:**
+Once a valid postcode has been submitted, my frontend app sends an fetch request to my backend server which then calls upon the API url and returns the `restaurantData`. 
+
+ you’ll need to filter this data to focus just on the restaurant data.
+
 ## Assumptions/Additions
 
 Overall, I found this task to be quite straightforward. The emphasis was clear that this was a frontend-focused task. Nevertheless, this section will outline aspects of the task were I made assumptions / made additions:
