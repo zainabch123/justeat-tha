@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../App";
+import { AppContext } from "../utils/appContext";
 
 const Header = ({ setHeaderError }) => {
   const { setRestaurantData, setRestaurantsToDisplay, fetchRestaurants } =

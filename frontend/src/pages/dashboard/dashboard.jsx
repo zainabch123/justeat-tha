@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../App";
+import { AppContext } from "../../utils/appContext";
 import Header from "../../components/header";
 import RestaurantList from "../../components/restaurantsList";
 import "./dashboard.css";
