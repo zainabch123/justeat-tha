@@ -8,6 +8,8 @@ const DashboardPage = () => {
   const { restaurantData, restaurantsToDisplay, setRestaurantsToDisplay } =
     useContext(AppContext);
   const [selectedOption, setSelectedOption] = useState("default");
+    const [headerError, setHeaderError] = useState("");
+
 
   useEffect(() => {
     setSelectedOption("default");
@@ -34,7 +36,7 @@ const DashboardPage = () => {
 
   return (
     <div className="dashboard-page">
-      <Header />
+      <Header setHeaderError={setHeaderError} />
       <div className="overflow-container">
         <div className="content-wrapper">
           <aside className="left-sidebar">
@@ -51,7 +53,11 @@ const DashboardPage = () => {
             </select>
           </aside>
 
-          <RestaurantList restaurantsToDisplay={restaurantsToDisplay} />
+          {headerError ? (
+            <p className="error">{headerError}</p>
+          ) : (
+            <RestaurantList restaurantsToDisplay={restaurantsToDisplay} />
+          )}
         </div>
       </div>
     </div>

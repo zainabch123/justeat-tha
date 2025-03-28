@@ -5,7 +5,8 @@ import { AppContext } from "../../App";
 import "./locationInput.css";
 
 const LocationInput = () => {
-  const { setRestaurantData, setRestaurantsToDisplay, fetchRestaurants } = useContext(AppContext);
+  const { setRestaurantData, setRestaurantsToDisplay, fetchRestaurants } =
+    useContext(AppContext);
   const navigate = useNavigate();
   const [locationInput, setLocationInput] = useState("");
   const [error, setError] = useState(null);
@@ -18,8 +19,6 @@ const LocationInput = () => {
 
     try {
       const data = await fetchRestaurants(locationInput);
-      setLoading(false);
-
       if (data.data) {
         setRestaurantData(data.data);
         setRestaurantsToDisplay(data.data);
@@ -31,6 +30,8 @@ const LocationInput = () => {
     } catch (error) {
       console.log(error);
       setError("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 

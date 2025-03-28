@@ -142,6 +142,7 @@ input:focus {
 }
 
 .restaurants-grid {
+  grid-column: 2 / span 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
   grid-auto-rows: 300px;

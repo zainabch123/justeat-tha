@@ -2,32 +2,35 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../App";
 
-const Header = () => {
+const Header = ({ setHeaderError }) => {
   const { setRestaurantData, setRestaurantsToDisplay, fetchRestaurants } =
     useContext(AppContext);
   const [headerInput, setHeaderInput] = useState("");
-  const [headerError, setHeaderError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleClick = async (event) => {
     event.preventDefault();
+    setHeaderError("");
+
     if (!headerInput) return;
     setLoading(true);
 
     try {
       const data = await fetchRestaurants(headerInput);
-      setLoading(false);
-
       if (data.data) {
         setRestaurantData(data.data);
         setRestaurantsToDisplay(data.data);
         setHeaderInput("");
       } else {
         setHeaderError(data.error);
+        setRestaurantsToDisplay([]);
       }
     } catch (error) {
       console.log(error);
       setHeaderError("An error occurred. Please try again.");
+      setRestaurantsToDisplay([]);
+    } finally {
+      setLoading(false);
     }
   };
 
