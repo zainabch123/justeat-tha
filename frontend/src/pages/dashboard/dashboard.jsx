@@ -8,8 +8,7 @@ const DashboardPage = () => {
   const { restaurantData, restaurantsToDisplay, setRestaurantsToDisplay } =
     useContext(AppContext);
   const [selectedOption, setSelectedOption] = useState("default");
-    const [headerError, setHeaderError] = useState("");
-
+  const [headerError, setHeaderError] = useState("");
 
   useEffect(() => {
     setSelectedOption("default");

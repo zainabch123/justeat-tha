@@ -1,11 +1,11 @@
-import { useState, createContext } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import LocationInput from "./pages/locationInput/locationInput";
 import Dashboard from "./pages/dashboard/dashboard";
+import { AppContext } from "./utils/appContext";
 import "./App.css";
 
 const PORT = import.meta.env.VITE_PORT;
-export const AppContext = createContext();
 
 const App = () => {
   const [restaurantData, setRestaurantData] = useState([]);
